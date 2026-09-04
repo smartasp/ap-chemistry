@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AP Chemistry Test 1 — Practice Set &amp; Reference</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/mhchem.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+
+<style>
+  html[data-theme="dark"]{
+    --bg:#12151a; --card:#1b1f26; --ink:#e7ebf0; --muted:#96a1b0;
+    --line:#2b323c; --accent:#79b8d8; --accent-soft:#1c2932; --accent-ink:#0f1418;
+    --good:#63cf95; --good-soft:#16261e; --warn:#e2ac52; --warn-soft:#2a2317;
+    --chip:#232a33; --btn:#20262e; --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+  html[data-theme="light"]{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1a1d21; --muted:#5f6875;
+    --line:#e2e6ec; --accent:#2f6f8f; --accent-soft:#e8f1f6; --accent-ink:#ffffff;
+    --good:#1f7a4d; --good-soft:#e6f4ec; --warn:#8a5a10; --warn-soft:#fdf3e0;
+    --chip:#f0f3f6; --btn:#f7f9fb; --shadow:0 1px 2px rgba(16,24,40,.04);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       transition:background .18s ease,color .18s ease;}
+  .wrap{max-width:940px;margin:0 auto;padding:24px 18px 80px}
+  header{margin-bottom:18px}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:14px}
+  nav{position:sticky;top:0;z-index:20;background:var(--bg);padding:12px 0;border-bottom:1px solid var(--line);
+      display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+  nav button{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;
+      padding:7px 14px;font-size:14px;cursor:pointer;font-weight:500}
+  nav button:hover{border-color:var(--accent);color:var(--accent)}
+  nav button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  #theme{margin-left:auto}
+  section{display:none} section.on{display:block}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px;box-shadow:var(--shadow)}
+  h2{font-size:20px;margin:26px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent-soft)}
+  h2:first-child{margin-top:0}
+  h3{font-size:16px;margin:18px 0 8px;color:var(--accent)}
+  h3:first-child{margin-top:0}
+  p,li{font-size:15px}
+  ul,ol{padding-left:20px;margin:8px 0}
+  li{margin:5px 0}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;
+      background:var(--chip);padding:1px 5px;border-radius:4px}
+  .formula{background:var(--accent-soft);border-left:3px solid var(--accent);padding:12px 16px;
+      border-radius:0 8px 8px 0;margin:12px 0;overflow-x:auto}
+  .formula .katex-display{margin:.35em 0}
+  .formula .lbl{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+  .tip{background:var(--warn-soft);border-left:3px solid var(--warn);padding:10px 14px;
+      border-radius:0 8px 8px 0;margin:10px 0;font-size:14.5px}
+  .tip b{color:var(--warn)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:var(--chip);font-weight:600}
+  .q{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:var(--card)}
+  .q .stem{padding:12px 15px;font-size:15px}
+  .q .stem b{color:var(--accent);margin-right:6px}
+  .q button.rev{width:100%;text-align:left;background:var(--btn);border:0;border-top:1px solid var(--line);
+      padding:9px 15px;font-size:13.5px;color:var(--accent);cursor:pointer;font-weight:600}
+  .q .sol{display:none;padding:13px 15px;background:var(--good-soft);border-top:1px solid var(--line);font-size:14.5px}
+  .q .sol.on{display:block}
+  .q .sol .ans{font-weight:700;color:var(--good);display:block;margin-top:10px}
+  .steps{margin:0;padding-left:18px}
+  .steps li{margin:4px 0}
+  .fc-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  .fc-bar select,.fc-bar button{border:1px solid var(--line);background:var(--card);color:var(--ink);
+      border-radius:8px;padding:7px 12px;font-size:14px;cursor:pointer}
+  .fc-bar button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .fc{background:var(--card);border:1px solid var(--line);border-radius:14px;min-height:190px;
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:28px 24px;
+      cursor:pointer;user-select:none;font-size:18px;line-height:1.55}
+  .fc.back{background:var(--accent-soft);border-color:var(--accent)}
+  .fc small{display:block;color:var(--muted);font-size:12px;margin-top:14px;letter-spacing:.04em;text-transform:uppercase}
+  .fc-nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:14px;color:var(--muted)}
+  .fc-nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 16px;cursor:pointer;font-size:14px}
+  .chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line)}
+  .chk:last-child{border-bottom:0}
+  .chk input{margin-top:4px;width:17px;height:17px;flex:none;cursor:pointer;accent-color:var(--accent)}
+  .chk label{font-size:15px;cursor:pointer}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.two{grid-template-columns:1fr} #theme{margin-left:0}}
+  .katex{font-size:1.03em}
+  .barbtn{border:1px solid var(--line);background:var(--btn);color:var(--accent);border-radius:8px;
+      padding:5px 12px;font-size:13px;cursor:pointer;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AP Chemistry Test 1 — Practice Set &amp; Reference</h1>
+  <div class="sub">Significant figures &middot; Percent composition &middot; Mole calculations &middot; Empirical formulas &middot; Net ionic equations &middot; Alloys &middot; Mass spectrometry &middot; Labs: unknown chloride, hydrate</div>
+</header>
+
+<nav>
+  <button class="on" data-t="sheet">Review Sheet</button>
+  <button data-t="prac">Practice (62)</button>
+  <button data-t="cards">Flashcards</button>
+  <button data-t="labs">Lab Review</button>
+  <button data-t="check">Final Check</button>
+  <button id="theme">☀ Light</button>
+</nav>
+
+<!-- ============ REVIEW SHEET ============ -->
+<section id="sheet" class="on">
+
+  <div class="card">
+    <h2>The five mistakes that cost the most points</h2>
+    <ol>
+      <li><b>Rounding mid-problem.</b> Carry extra digits, round once at the very end.</li>
+      <li><b>Dividing by the wrong smallest number</b> in empirical formulas — it must be the smallest <i>mole</i> value.</li>
+      <li><b>Leaving out states</b> (s, l, g, aq) in net ionic equations. Usually a required point.</li>
+      <li><b>Forgetting subscripts</b> when counting atoms: one mole of \(\ce{Al2(SO4)3}\) has 12 mol O, not 4.</li>
+      <li><b>Using mass fractions as if they were mole fractions</b> in mass spec. Weight by abundance, not by mass.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>1. Significant figures</h2>
+    <h3>Counting them</h3>
+    <ul>
+      <li>All nonzero digits count. \(4521\) → 4 sig figs.</li>
+      <li>Zeros <i>between</i> nonzeros count. \(4.005\) → 4.</li>
+      <li>Leading zeros never count. \(0.00420\) → 3 (the 4, the 2, and the trailing 0).</li>
+      <li>Trailing zeros count <i>only</i> if there's a decimal point. \(50.0\) → 3; \(1200\) → 2 (ambiguous); \(1200.\) → 4.</li>
+      <li>Scientific notation removes all ambiguity: \(1.200\times10^{3}\) → 4.</li>
+      <li>Exact numbers (counted objects, defined conversions like \(1\ \mathrm{m}=100\ \mathrm{cm}\)) have infinite sig figs and never limit your answer.</li>
+    </ul>
+    <h3>Carrying them through math</h3>
+    <div class="formula">
+      \[\times \ \text{and}\ \div \ \longrightarrow\ \text{answer takes the \textbf{fewest significant figures}}\]
+      \[+ \ \text{and}\ - \ \longrightarrow\ \text{answer takes the \textbf{fewest decimal places}}\]
+    </div>
+    <p>Mixed operations: apply the rule at each step's level, but only actually round at the end.</p>
+    <div class="tip"><b>Watch for:</b> molar masses. Use at least as many sig figs as your data has, or you manufacture rounding error. Use \(18.02\ \mathrm{g/mol}\) for water, not \(18\).</div>
+  </div>
+
+  <div class="card">
+    <h2>2. Mole calculations</h2>
+    <div class="formula">
+      \[n=\frac{m}{M}\qquad N=n\,N_{A}\qquad M=\frac{m}{n}\]
+      <span class="lbl">moles = grams ÷ molar mass &nbsp;·&nbsp; particles = moles × \(6.022\times10^{23}\ \mathrm{mol^{-1}}\) &nbsp;·&nbsp; molar mass = grams ÷ moles</span>
+    </div>
+    <p>Everything is one road map. To get from any quantity to any other, walk it:</p>
+    <div class="formula">
+      \[\text{grams}\ \underset{\times M}{\overset{\div M}{\rightleftharpoons}}\ \boxed{\text{MOLES}}\ \underset{\div N_A}{\overset{\times N_A}{\rightleftharpoons}}\ \text{particles}\]
+      \[\boxed{\text{MOLES}}\ \xrightarrow{\ \times\ \text{subscript}\ }\ \text{moles of one element}\]
+    </div>
+    <p><b>Moles is always the hub.</b> You can never go grams → particles directly.</p>
+    <h3>Dimensional analysis, done right</h3>
+    <p>Write every conversion as a fraction with units, and cancel. If the units don't cancel to what you want, the setup is wrong — check that before you press a single calculator key.</p>
+    <div class="formula">
+      \[2.50\ \mathrm{g}\ \ce{H2O}\times\frac{1\ \mathrm{mol}}{18.02\ \mathrm{g}}\times\frac{6.022\times10^{23}\ \text{molecules}}{1\ \mathrm{mol}}=8.35\times10^{22}\ \text{molecules}\]
+    </div>
+    <div class="tip"><b>Sanity check every answer.</b> Fewer than about \(100\ \mathrm{g}\) of anything is usually a few moles at most. If you get \(10^{5}\) moles from 12 grams, you divided the wrong way.</div>
+  </div>
+
+  <div class="card">
+    <h2>3. Percent composition</h2>
+    <div class="formula">
+      \[\%\,\text{element}=\frac{\text{mass of that element in 1 mol}}{\text{molar mass of compound}}\times100\]
+    </div>
+    <p>Use the <i>total</i> mass of the element, so multiply by the subscript. Percentages must sum to 100% (± rounding) — that's your free check.</p>
+    <h3>Worked shape</h3>
+    <p>%N in \(\ce{NH4NO3}\): two N per formula unit, so \(2(14.01)=28.02\ \mathrm{g}\), and the molar mass is \(80.05\ \mathrm{g/mol}\).</p>
+    <div class="formula">\[\%\,\ce{N}=\frac{28.02}{80.05}\times100=35.00\%\]</div>
+    <h3>The reverse direction</h3>
+    <p>Convert the percent to a decimal first (35.00% → 0.3500), then:</p>
+    <div class="formula">
+      \[\text{element mass}=(\text{decimal})\times(\text{sample mass})\qquad
+        \text{sample needed}=\frac{\text{element mass}}{\text{decimal}}\]
+    </div>
+    <p>Fertilizer and ore problems always run one of these two ways.</p>
+  </div>
+
+  <div class="card">
+    <h2>4. Empirical &amp; molecular formulas</h2>
+    <p>Empirical formula = simplest whole-number ratio of atoms. Molecular formula = the actual count, always a whole-number multiple of the empirical.</p>
+    <h3>The five-step algorithm (memorize this)</h3>
+    <ol>
+      <li><b>Percent to mass.</b> Assume exactly \(100\ \mathrm{g}\), so 40.0% C becomes \(40.0\ \mathrm{g}\) C. (If you're given masses already, skip this.)</li>
+      <li><b>Mass to moles.</b> Divide each by its atomic mass.</li>
+      <li><b>Divide by the smallest</b> mole value.</li>
+      <li><b>Multiply to whole numbers</b> if needed. Only round when you're within about \(0.1\) of an integer.</li>
+      <li><b>Write the formula</b> using those numbers as subscripts.</li>
+    </ol>
+    <h3>Decimals you must not round away</h3>
+    <table>
+      <tr><th>You get</th><th>Multiply everything by</th><th>Example</th></tr>
+      <tr><td>\(.50\)</td><td>2</td><td>\(1:1.50\ \rightarrow\ 2:3\)</td></tr>
+      <tr><td>\(.33\) or \(.67\)</td><td>3</td><td>\(1:1.33\ \rightarrow\ 3:4\)</td></tr>
+      <tr><td>\(.25\) or \(.75\)</td><td>4</td><td>\(1:2.25\ \rightarrow\ 4:9\)</td></tr>
+      <tr><td>\(.20,.40,.60,.80\)</td><td>5</td><td>\(1:1.40\ \rightarrow\ 5:7\)</td></tr>
+    </table>
+    <h3>Getting the molecular formula</h3>
+    <div class="formula">
+      \[n=\frac{\text{molar mass of compound}}{\text{empirical formula mass}}\qquad
+        \text{molecular formula}=(\text{empirical formula})\times n\]
+    </div>
+    <p>\(\ce{CH2O}\) has an empirical mass of \(30.03\). If the molar mass is \(180.\ \mathrm{g/mol}\), then \(n=180./30.03\approx6\), giving \(\ce{C6H12O6}\). Note that \(n\) rounds to a clean integer; if yours doesn't, recheck the empirical formula.</p>
+    <div class="tip"><b>Combustion variant:</b> if you're given the masses of \(\ce{CO2}\) and \(\ce{H2O}\) produced, then \(n_{\ce{C}}=n_{\ce{CO2}}\) and \(n_{\ce{H}}=2\,n_{\ce{H2O}}\). Find the mass of O by subtracting the C and H masses from the original sample mass — never by assuming.</div>
+  </div>
+
+  <div class="card">
+    <h2>5. Net ionic equations</h2>
+    <h3>The procedure</h3>
+    <ol>
+      <li>Write the balanced <b>molecular equation</b> with correct formulas and states.</li>
+      <li>Write the <b>complete ionic equation</b>: split every strong electrolyte that is \((aq)\) into its ions.</li>
+      <li>Cancel the <b>spectator ions</b> (identical on both sides, same state).</li>
+      <li>What's left is the <b>net ionic equation</b>. Check that both mass and charge balance.</li>
+    </ol>
+    <h3>What splits and what doesn't</h3>
+    <table>
+      <tr><th>Split into ions</th><th>Keep whole</th></tr>
+      <tr><td>Soluble ionic compounds \((aq)\)</td><td>Solids \((s)\) — precipitates, metals</td></tr>
+      <tr><td>Strong acids: \(\ce{HCl}\), \(\ce{HBr}\), \(\ce{HI}\), \(\ce{HNO3}\), \(\ce{H2SO4}\), \(\ce{HClO4}\), \(\ce{HClO3}\)</td>
+          <td>Weak acids: \(\ce{HF}\), \(\ce{CH3COOH}\), \(\ce{H2CO3}\), \(\ce{H3PO4}\), \(\ce{HNO2}\), \(\ce{HCN}\)</td></tr>
+      <tr><td>Strong bases: group 1 hydroxides, plus \(\ce{Ca(OH)2}\), \(\ce{Sr(OH)2}\), \(\ce{Ba(OH)2}\)</td>
+          <td>Weak bases: \(\ce{NH3}\), amines</td></tr>
+      <tr><td></td><td>Gases \((g)\), liquids \((l)\), water, all molecular compounds</td></tr>
+    </table>
+    <h3>Solubility rules</h3>
+    <table>
+      <tr><th>Always soluble</th><td>Group 1 (\(\ce{Li+}\), \(\ce{Na+}\), \(\ce{K+}\)…), \(\ce{NH4+}\), \(\ce{NO3-}\), \(\ce{CH3COO-}\), \(\ce{ClO4-}\) — <b>no exceptions worth memorizing</b></td></tr>
+      <tr><th>Soluble, with exceptions</th>
+          <td>\(\ce{Cl-}\), \(\ce{Br-}\), \(\ce{I-}\) — <i>except</i> \(\ce{Ag+}\), \(\ce{Pb^2+}\), \(\ce{Hg2^2+}\)<br>
+              \(\ce{SO4^2-}\) — <i>except</i> \(\ce{Ba^2+}\), \(\ce{Pb^2+}\), \(\ce{Ca^2+}\), \(\ce{Sr^2+}\), \(\ce{Ag+}\)</td></tr>
+      <tr><th>Insoluble, with exceptions</th>
+          <td>\(\ce{CO3^2-}\), \(\ce{PO4^3-}\), \(\ce{S^2-}\), \(\ce{OH-}\) — <i>except</i> with group 1 or \(\ce{NH4+}\)<br>
+              \(\ce{S^2-}\) is also soluble with group 2 (\(\ce{CaS}\), \(\ce{SrS}\), \(\ce{BaS}\))<br>
+              \(\ce{OH-}\): \(\ce{Ba(OH)2}\) and \(\ce{Sr(OH)2}\) are soluble enough to treat as strong bases; \(\ce{Ca(OH)2}\) is only slightly soluble</td></tr>
+    </table>
+    <h3>Three reaction types that drive a reaction</h3>
+    <ul>
+      <li><b>Precipitation</b> — an insoluble solid forms: \(\ce{Ag+(aq) + Cl-(aq) -> AgCl(s)}\)</li>
+      <li><b>Neutralization</b> — water forms. Strong + strong: \(\ce{H+(aq) + OH-(aq) -> H2O(l)}\)</li>
+      <li><b>Gas-forming</b> — carbonates with acid give \(\ce{CO2}\); sulfides give \(\ce{H2S}\):<br>\(\ce{CO3^2-(aq) + 2H+(aq) -> H2O(l) + CO2(g)}\)</li>
+    </ul>
+    <p>If none of these happens, all ions cancel and there is <b>no reaction</b>. That is a legitimate answer — write "NR" and say why.</p>
+    <div class="tip"><b>Charge balances too.</b> Sum the charges on each side; they must be equal (not necessarily zero). In \(\ce{Mg(s) + 2H+(aq) -> Mg^2+(aq) + H2(g)}\): \(0+2(+1)=+2\) on the left, \(+2+0=+2\) on the right. ✓</div>
+  </div>
+
+  <div class="card">
+    <h2>6. Alloys</h2>
+    <p>An alloy is a mixture (not a compound) of a metal with one or more other elements, and it keeps metallic bonding: cations in a sea of delocalized electrons. That's why alloys stay conductive, malleable, and lustrous.</p>
+    <table>
+      <tr><th></th><th>Substitutional</th><th>Interstitial</th></tr>
+      <tr><td><b>Structure</b></td><td>Added atoms <i>replace</i> host atoms in the lattice</td><td>Added atoms <i>squeeze into holes</i> between host atoms</td></tr>
+      <tr><td><b>Size requirement</b></td><td>Atomic radii within about 15% of each other</td><td>Added atom much smaller (C, N, H, B)</td></tr>
+      <tr><td><b>Examples</b></td><td>Brass (\(\ce{Cu}+\ce{Zn}\)), bronze (\(\ce{Cu}+\ce{Sn}\)), sterling silver (\(\ce{Ag}+\ce{Cu}\))</td><td>Steel (\(\ce{Fe}+\ce{C}\)), stainless partly interstitial</td></tr>
+      <tr><td><b>Main effect</b></td><td>Modest hardening; properties close to the host metal</td><td>Marked hardening and loss of malleability; density changes little</td></tr>
+    </table>
+    <h3>Why alloys are harder than pure metals</h3>
+    <p>In a pure metal, identical atoms sit in neat, uniform layers that can <b>slide past each other</b> when stress is applied — this is what makes pure metals soft and malleable. Different-sized atoms <b>disrupt the regular lattice</b>, so the layers no longer line up and can't slip easily. Result: harder, stronger, less malleable.</p>
+    <div class="tip"><b>Free-response phrasing:</b> "The different-sized atoms distort the regular arrangement of the lattice, which prevents layers of atoms from sliding past one another, so the alloy is harder than the pure metal." Say <i>layers sliding</i> — that's the phrase graders look for.</div>
+    <p>Two more consequences worth knowing. <b>Conductivity drops slightly:</b> the irregular lattice scatters the delocalized electrons, so brass conducts less well than pure copper. <b>Melting behavior changes:</b> a pure metal melts sharply at one temperature, while an alloy is a mixture and generally melts lower and over a <i>range</i>. Alloying can also raise corrosion resistance — chromium in stainless steel forms a thin protective oxide layer.</p>
+  </div>
+
+  <div class="card">
+    <h2>7. Mass spectrometry</h2>
+    <p>A mass spectrometer ionizes atoms, accelerates them, and deflects them in a magnetic field. Lighter ions deflect more, so the instrument separates them by <b>mass-to-charge ratio</b> \((m/z)\). The output plot shows one peak per isotope: <b>x-axis = mass, y-axis = relative abundance</b>.</p>
+    <h3>Reading a spectrum</h3>
+    <ul>
+      <li>Number of peaks = number of naturally occurring isotopes.</li>
+      <li>Peak position = isotope mass (≈ mass number).</li>
+      <li>Peak height = relative abundance. The average atomic mass falls <b>between the lightest and heaviest isotope masses, pulled toward the most abundant one</b>. (With exactly two isotopes it always lands nearest the taller peak.)</li>
+      <li>Isotopes have the same number of protons and electrons but different neutrons — identical chemistry, different mass.</li>
+    </ul>
+    <h3>Weighted average</h3>
+    <div class="formula">
+      \[\bar{A}=\sum_i f_i A_i \qquad\text{where } f_i=\text{fractional abundance},\ A_i=\text{isotope mass}\]
+    </div>
+    <p>Convert percentages to decimals first. For chlorine:</p>
+    <div class="formula">\[\bar{A}=(0.7576)(34.969)+(0.2424)(36.966)=35.45\ \mathrm{amu}\]</div>
+    <p>Notice the answer sits near 35, not halfway to 37 — because \(\ce{^{35}Cl}\) dominates.</p>
+    <h3>Working backwards for abundances</h3>
+    <p>Two isotopes, unknown split: let \(x\) be the fraction of the lighter one, so \(1-x\) is the heavier.</p>
+    <div class="formula">\[x\,A_1+(1-x)\,A_2=\bar{A}\]</div>
+    <p>Boron:</p>
+    <div class="formula">
+      \[x(10.013)+(1-x)(11.009)=10.81 \;\Longrightarrow\; x=\frac{0.199}{0.996}=0.200\]
+    </div>
+    <p>So 20.0% \(\ce{^{10}B}\) and 80.0% \(\ce{^{11}B}\).</p>
+    <div class="tip"><b>Quick check:</b> the average must fall <i>between</i> the isotope masses, and closer to the more abundant one. If your answer is outside that range or gives a negative abundance, you flipped the two masses.</div>
+  </div>
+</section>
+
+<!-- ============ PRACTICE ============ -->
+<section id="prac">
+  <div class="card">
+    <p style="margin:0"><b>62 problems, ordered by topic.</b> Work each one on paper before you reveal the solution.
+    <button id="revall" class="barbtn" style="float:right">Reveal all</button></p>
+  </div>
+  <div id="qs"></div>
+</section>
+
+<!-- ============ FLASHCARDS ============ -->
+<section id="cards">
+  <div class="card">
+    <div class="fc-bar">
+      <select id="deck"></select>
+      <button id="shuf">Shuffle</button>
+      <button id="flipbtn" class="primary">Flip</button>
+    </div>
+    <div class="fc" id="fc">Loading…</div>
+    <div class="fc-nav">
+      <button id="prev">← Prev</button>
+      <span id="count"></span>
+      <button id="next">Next →</button>
+    </div>
+    <p style="color:var(--muted);font-size:13.5px;margin-top:14px">Click the card to flip. The polyatomic ion and solubility decks are pure memorization — run them until you're perfect, since net ionic equations are impossible without them.</p>
+  </div>
+</section>
+
+<!-- ============ LABS ============ -->
+<section id="labs">
+  <div class="card">
+    <h2>Lab 1 — Unknown chloride (gravimetric analysis)</h2>
+    <h3>The idea</h3>
+    <p>You have an unknown metal chloride. Dissolve it, add excess silver nitrate, and every chloride ion precipitates as \(\ce{AgCl}\). Weigh the dry \(\ce{AgCl}\), work backwards to the mass of chloride in your original sample, and that gives the percent chloride — which identifies the compound.</p>
+    <div class="formula">\[\ce{Ag+(aq) + Cl-(aq) -> AgCl(s)}\]</div>
+
+    <h3>Procedure, and why each step exists</h3>
+    <ol>
+      <li><b>Weigh the unknown accurately</b> on an analytical balance. Every later number depends on this one.</li>
+      <li><b>Dissolve in distilled water.</b> Tap water contains chloride — it would inflate your result.</li>
+      <li><b>Add \(\ce{AgNO3}\) in excess.</b> Excess guarantees complete precipitation. Test for completeness by adding another drop to the clear supernatant: no new cloudiness means you're done.</li>
+      <li><b>Digest / let stand,</b> often warm. Small crystals dissolve and redeposit onto larger ones, giving a coarser precipitate that filters without passing through the paper.</li>
+      <li><b>Filter and wash</b> with cold distilled water to remove trapped soluble ions (\(\ce{NO3-}\), the spectator cation). Cold, because \(\ce{AgCl}\) is very slightly soluble.</li>
+      <li><b>Dry to constant mass.</b> Weigh, dry again, reweigh; when two masses agree, all water is gone. Keep \(\ce{AgCl}\) out of direct light — it photodecomposes to grey silver metal.</li>
+    </ol>
+
+    <h3>The calculation</h3>
+    <p>A \(0.745\ \mathrm{g}\) sample of an unknown chloride \(\ce{MCl}\) yields \(1.433\ \mathrm{g}\) of dry \(\ce{AgCl}\). Identify M.</p>
+    <div class="formula">
+      \[n_{\ce{AgCl}}=\frac{1.433\ \mathrm{g}}{143.32\ \mathrm{g/mol}}=0.01000\ \mathrm{mol}=n_{\ce{Cl-}}\]
+      \[m_{\ce{Cl}}=(0.01000)(35.45)=0.3545\ \mathrm{g}
+        \qquad \%\,\ce{Cl}=\frac{0.3545}{0.745}\times100=47.6\%\]
+      \[M_{\ce{MCl}}=\frac{0.745\ \mathrm{g}}{0.01000\ \mathrm{mol}}=74.5\ \mathrm{g/mol}
+        \qquad M_{\ce{M}}=74.5-35.45=39.1\ \mathrm{g/mol}\]
+    </div>
+    <p>\(39.1\ \mathrm{g/mol}\) is potassium, so <b>the unknown is \(\ce{KCl}\)</b>.</p>
+    <p>For comparison: \(\ce{LiCl}\) is 83.6% Cl, \(\ce{NaCl}\) 60.7%, \(\ce{KCl}\) 47.6%, \(\ce{CaCl2}\) 63.9%. A percent-chloride value maps to one compound.</p>
+
+    <h3>Error analysis — expect this on the test</h3>
+    <table>
+      <tr><th>Mistake</th><th>Effect on measured %Cl</th><th>Why</th></tr>
+      <tr><td>Precipitate not fully dry</td><td><b>Too high</b></td><td>Extra water mass counted as \(\ce{AgCl}\)</td></tr>
+      <tr><td>Some precipitate passes through filter / left in beaker</td><td><b>Too low</b></td><td>Less \(\ce{AgCl}\) weighed than actually formed</td></tr>
+      <tr><td>Insufficient \(\ce{AgNO3}\) added</td><td><b>Too low</b></td><td>Not all \(\ce{Cl-}\) precipitated</td></tr>
+      <tr><td>Washed with warm water</td><td><b>Too low</b></td><td>\(\ce{AgCl}\) slightly soluble; some dissolves away</td></tr>
+      <tr><td>Used tap water</td><td><b>Too high</b></td><td>Adds chloride not from the sample</td></tr>
+      <tr><td>\(\ce{AgCl}\) exposed to light (turns purple/grey)</td><td><b>Slightly low</b></td><td>Decomposes to \(\ce{Ag}\) and \(\ce{Cl2}\), losing mass</td></tr>
+    </table>
+    <div class="tip"><b>Reasoning pattern for any error question:</b> ask "does this change the numerator or the denominator, and in which direction?" Then read the fraction. Don't try to intuit it.</div>
+  </div>
+
+  <div class="card">
+    <h2>Lab 2 — Empirical formula of a hydrate</h2>
+    <h3>The idea</h3>
+    <p>A hydrate is an ionic compound with water molecules locked into its crystal lattice in a fixed ratio, written \(\ce{MgSO4.7H2O}\). Heating drives off the water, leaving the anhydrous salt. Mass lost = mass of water. From there it's a two-substance empirical formula problem.</p>
+    <div class="formula">\[\ce{MgSO4.$x$H2O(s) ->[\Delta] MgSO4(s) + $x$H2O(g)}\]</div>
+
+    <h3>Procedure</h3>
+    <ol>
+      <li><b>Mass the empty crucible and lid,</b> after pre-heating and cooling them, to burn off any residue or moisture already present.</li>
+      <li><b>Add hydrate; mass again.</b> Hydrate mass = difference.</li>
+      <li><b>Heat gently, then strongly,</b> lid ajar. Gentle first so the sample doesn't spatter out; ajar so steam escapes but solid doesn't.</li>
+      <li><b>Cool in a desiccator</b> before massing. A hot crucible creates convection currents that make the balance read low, and the anhydrous salt is hygroscopic — it reabsorbs water from the air.</li>
+      <li><b>Heat again, cool, remass</b> until two consecutive masses agree (constant mass). That's your proof all water is gone.</li>
+    </ol>
+
+    <h3>The calculation</h3>
+    <p>\(4.94\ \mathrm{g}\) of \(\ce{MgSO4.$x$H2O}\) is heated to \(2.41\ \mathrm{g}\) of anhydrous \(\ce{MgSO4}\). Find \(x\).</p>
+    <div class="formula">
+      \[m_{\ce{H2O}}=4.94-2.41=2.53\ \mathrm{g}\]
+      \[n_{\ce{H2O}}=\frac{2.53}{18.02}=0.1404\ \mathrm{mol}\qquad
+        n_{\ce{MgSO4}}=\frac{2.41}{120.37}=0.02002\ \mathrm{mol}\]
+      \[x=\frac{0.1404}{0.02002}=7.01\ \approx\ 7\quad\Longrightarrow\quad \ce{MgSO4.7H2O}\]
+    </div>
+    <p>Percent water by mass \(=\dfrac{2.53}{4.94}\times100=51.2\%\). Worth reporting — it's a common follow-up question.</p>
+
+    <h3>Error analysis</h3>
+    <table>
+      <tr><th>Mistake</th><th>Effect on calculated \(x\)</th><th>Why</th></tr>
+      <tr><td>Underheating (water remains)</td><td><b>Too low</b></td><td>Mass loss too small → less water counted</td></tr>
+      <tr><td>Overheating (salt decomposes)</td><td><b>Too high</b></td><td>Extra mass lost is credited to water</td></tr>
+      <tr><td>Sample spatters out of crucible</td><td><b>Too high</b></td><td>Lost solid registers as lost water</td></tr>
+      <tr><td>Massed while still hot</td><td><b>Too high</b></td><td>Hot object reads low → apparent extra mass loss</td></tr>
+      <tr><td>Cooled in open air, reabsorbed moisture</td><td><b>Too low</b></td><td>Final mass too high → less apparent water</td></tr>
+      <tr><td>Crucible not pre-fired</td><td><b>Too high</b></td><td>Crucible's own moisture burns off, adding to mass loss</td></tr>
+    </table>
+    <div class="tip"><b>The unifying insight for both labs:</b> every error question reduces to one of two things — mass you counted that shouldn't be there, or mass that got away. Decide which, then trace it through the ratio.</div>
+  </div>
+</section>
+
+<!-- ============ CHECK ============ -->
+<section id="check">
+  <div class="card">
+    <h2>Can you do all of these without looking?</h2>
+    <p style="color:var(--muted);font-size:14px">Tick what's solid. Anything left unticked points you back to a section.</p>
+    <div id="checklist"></div>
+    <p id="score" style="margin-top:16px;font-weight:600;color:var(--accent)"></p>
+  </div>
+  <div class="card">
+    <h2>Numbers to have memorized</h2>
+    <div class="two">
+      <ul style="margin:0">
+        <li>\(N_A=6.022\times10^{23}\ \mathrm{mol^{-1}}\)</li>
+        <li>\(\ce{H}=1.008\), \(\ce{C}=12.01\), \(\ce{N}=14.01\), \(\ce{O}=16.00\)</li>
+        <li>\(\ce{Na}=22.99\), \(\ce{Mg}=24.31\), \(\ce{S}=32.06\), \(\ce{Cl}=35.45\)</li>
+        <li>\(M_{\ce{H2O}}=18.02\ \mathrm{g/mol}\), \(M_{\ce{CO2}}=44.01\ \mathrm{g/mol}\)</li>
+      </ul>
+      <ul style="margin:0">
+        <li>Strong acids (7): \(\ce{HCl}\), \(\ce{HBr}\), \(\ce{HI}\), \(\ce{HNO3}\), \(\ce{H2SO4}\), \(\ce{HClO4}\), \(\ce{HClO3}\)</li>
+        <li>Strong bases: group 1 \(\ce{OH-}\), plus Ca, Sr, Ba hydroxides</li>
+        <li>Always soluble: group 1, \(\ce{NH4+}\), \(\ce{NO3-}\), \(\ce{CH3COO-}\)</li>
+        <li>Halide exceptions: \(\ce{Ag+}\), \(\ce{Pb^2+}\), \(\ce{Hg2^2+}\)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+/* ---------- theme ---------- */
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  function set(t){ root.setAttribute('data-theme',t); btn.textContent = t==='dark' ? '☀ Light' : '☾ Dark'; }
+  btn.onclick=function(){ set(root.getAttribute('data-theme')==='dark'?'light':'dark'); };
+  set('dark');
+})();
+
+/* ---------- math rendering helper ---------- */
+function typeset(el){
+  if(typeof renderMathInElement!=='function') return;
+  try{
+    renderMathInElement(el,{
+      delimiters:[
+        {left:'\\[',right:'\\]',display:true},
+        {left:'\\(',right:'\\)',display:false}
+      ],
+      throwOnError:false
+    });
+  }catch(e){}
+}
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('nav button[data-t]').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('nav button[data-t]').forEach(function(x){x.classList.remove('on')});
+    document.querySelectorAll('section').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+    document.getElementById(b.dataset.t).classList.add('on');
+    window.scrollTo(0,0);
+  };
+});
+
+/* ---------- practice problems ---------- */
+var P=[
+{h:'Significant figures'},
+{q:'How many significant figures are in each: (a) \\(0.00420\\) (b) \\(1200\\) (c) \\(1.200\\times10^{3}\\) (d) \\(50.0\\) (e) \\(4.005\\) (f) \\(0.0300\\)',
+ s:['Leading zeros never count; trailing zeros count only when a decimal point is present.'],
+ a:'(a) 3 &nbsp; (b) 2 &nbsp; (c) 4 &nbsp; (d) 3 &nbsp; (e) 4 &nbsp; (f) 3'},
+{q:'Calculate to the correct number of significant figures: \\(12.011+3.4+0.567\\)',
+ s:['Addition, so the fewest decimal places governs.','\\(3.4\\) has only 1 decimal place.','Raw sum \\(=15.978\\), round to 1 decimal place.'],
+ a:'\\(16.0\\)'},
+{q:'Calculate to the correct number of significant figures: \\(\\dfrac{4.52\\times10.3}{2.1}\\)',
+ s:['Multiplication and division, so the fewest significant figures governs.','\\(2.1\\) has 2 sig figs.','Raw value \\(=22.1695\\ldots\\)'],
+ a:'\\(22\\)'},
+{q:'A student measures \\(25.00\\ \\mathrm{mL}\\) of a liquid with density \\(1.036\\ \\mathrm{g/mL}\\). What mass should be reported?',
+ s:['\\((25.00\\ \\mathrm{mL})(1.036\\ \\mathrm{g/mL})=25.90\\ \\mathrm{g}\\)','Both values have 4 sig figs, so the answer keeps 4.','The trailing zero is significant and must be written.'],
+ a:'\\(25.90\\ \\mathrm{g}\\)'},
+{q:'Round each to 3 significant figures: (a) \\(0.0034567\\) (b) \\(12{,}345\\) (c) \\(9.9987\\)',
+ s:['(a) The first significant digit is the 3; keep three: \\(3.46\\times10^{-3}\\).','(b) Three sig figs requires scientific notation, or the trailing zeros would be ambiguous.','(c) Rounding \\(9.9987\\) to 3 sig figs carries into a new digit: \\(10.0\\) — and the trailing zeros are significant here.'],
+ a:'(a) \\(0.00346\\) &nbsp; (b) \\(1.23\\times10^{4}\\) &nbsp; (c) \\(10.0\\)'},
+{q:'Three identical coins have a combined mass of \\(22.50\\ \\mathrm{g}\\). What is the mass of one coin?',
+ s:['\\(\\dfrac{22.50\\ \\mathrm{g}}{3}=7.500\\ \\mathrm{g}\\)','The 3 is a COUNTED number, so it is exact and has infinite sig figs.','Only \\(22.50\\) limits the answer, so keep 4 sig figs.'],
+ a:'\\(7.500\\ \\mathrm{g}\\) — writing \\(7.5\\ \\mathrm{g}\\) throws away two significant figures.'},
+{q:'A beaker plus sample masses \\(25.68\\ \\mathrm{g}\\); the empty beaker masses \\(25.6\\ \\mathrm{g}\\). Report the sample mass.',
+ s:['Subtraction, so the fewest decimal places governs.','\\(25.6\\) has 1 decimal place.','\\(25.68-25.6=0.08\\), which rounds to \\(0.1\\ \\mathrm{g}\\) at 1 decimal place.'],
+ a:'\\(0.1\\ \\mathrm{g}\\) — only 1 sig fig. Subtracting two close numbers destroys precision, which is why you never mass a small sample by difference on a coarse balance.'},
+{q:'A buret reads \\(1.25\\ \\mathrm{mL}\\) before delivery and \\(24.80\\ \\mathrm{mL}\\) after. What volume was delivered, and to how many significant figures?',
+ s:['\\(V=24.80-1.25=23.55\\ \\mathrm{mL}\\)','Both readings have 2 decimal places, so the difference keeps 2 decimal places.','Here subtraction does not cost you precision, because the numbers are far apart.'],
+ a:'\\(23.55\\ \\mathrm{mL}\\), 4 significant figures'},
+{q:'Calculate to the correct number of significant figures: \\((6.022\\times10^{23})(0.0250)\\)',
+ s:['\\(0.0250\\) has 3 sig figs (leading zeros do not count, the trailing zero does).','\\(6.022\\times10^{23}\\) has 4 sig figs.','Raw product \\(=1.5055\\times10^{22}\\), round to 3 sig figs.'],
+ a:'\\(1.51\\times10^{22}\\)'},
+{h:'Percent composition'},
+{q:'Calculate the percent by mass of nitrogen in ammonium nitrate, \\(\\ce{NH4NO3}\\).',
+ s:['\\(M=2(14.01)+4(1.008)+3(16.00)=80.05\\ \\mathrm{g/mol}\\)','Mass of N \\(=2(14.01)=28.02\\ \\mathrm{g}\\)','\\(\\%\\,\\ce{N}=\\dfrac{28.02}{80.05}\\times100\\)'],
+ a:'\\(35.00\\%\\ \\ce{N}\\)'},
+{q:'Calculate the percent by mass of oxygen in calcium nitrate, \\(\\ce{Ca(NO3)2}\\).',
+ s:['The subscript 2 applies to the whole nitrate group, so there are 6 oxygens.','\\(M=40.08+2(14.01)+6(16.00)=164.10\\ \\mathrm{g/mol}\\)','Mass of O \\(=6(16.00)=96.00\\ \\mathrm{g}\\)','\\(\\%\\,\\ce{O}=\\dfrac{96.00}{164.10}\\times100\\)'],
+ a:'\\(58.50\\%\\ \\ce{O}\\)'},
+{q:'A farmer can buy ammonia, \\(\\ce{NH3}\\), or ammonium sulfate, \\(\\ce{(NH4)2SO4}\\), as fertilizer. Which delivers more nitrogen per kilogram, and by how much?',
+ s:['\\(\\ce{NH3}\\): \\(M=17.03\\), so \\(\\%\\,\\ce{N}=\\dfrac{14.01}{17.03}\\times100=82.27\\%\\)','\\(\\ce{(NH4)2SO4}\\): \\(M=132.14\\), so \\(\\%\\,\\ce{N}=\\dfrac{2(14.01)}{132.14}\\times100=21.20\\%\\)','Difference \\(=61.07\\) percentage points.'],
+ a:'Ammonia, \\(82.27\\%\\) N vs \\(21.20\\%\\) N — about \\(3.9\\times\\) more nitrogen per kilogram.'},
+{q:'Calculate the percent by mass of iron in hematite, \\(\\ce{Fe2O3}\\).',
+ s:['\\(M=2(55.85)+3(16.00)=159.70\\ \\mathrm{g/mol}\\)','Mass of Fe \\(=2(55.85)=111.70\\ \\mathrm{g}\\)','\\(\\%\\,\\ce{Fe}=\\dfrac{111.70}{159.70}\\times100\\)'],
+ a:'\\(69.94\\%\\ \\ce{Fe}\\)'},
+{q:'How many grams of calcium are in \\(25.0\\ \\mathrm{g}\\) of calcium carbonate, \\(\\ce{CaCO3}\\)?',
+ s:['\\(M=40.08+12.01+3(16.00)=100.09\\ \\mathrm{g/mol}\\)','\\(\\%\\,\\ce{Ca}=\\dfrac{40.08}{100.09}\\times100=40.04\\%\\)','Convert to a decimal and multiply: \\(m=(0.4004)(25.0\\ \\mathrm{g})\\)'],
+ a:'\\(10.0\\ \\mathrm{g}\\ \\ce{Ca}\\)'},
+{q:'Which is the richer iron ore by mass percent: hematite \\((\\ce{Fe2O3})\\) or magnetite \\((\\ce{Fe3O4})\\)?',
+ s:['\\(\\ce{Fe2O3}\\): \\(M=159.70\\), \\(\\%\\,\\ce{Fe}=\\dfrac{111.70}{159.70}\\times100=69.94\\%\\)','\\(\\ce{Fe3O4}\\): \\(M=3(55.85)+4(16.00)=231.55\\), \\(\\%\\,\\ce{Fe}=\\dfrac{167.55}{231.55}\\times100=72.36\\%\\)','Compare directly — no other information is needed.'],
+ a:'Magnetite, \\(72.36\\%\\) Fe vs \\(69.94\\%\\) Fe.'},
+{q:'Calculate the percent water by mass in the hydrate \\(\\ce{CuSO4.5H2O}\\).',
+ s:['\\(M_{\\ce{CuSO4}}=63.55+32.06+4(16.00)=159.61\\)','\\(5\\,M_{\\ce{H2O}}=5(18.02)=90.10\\)','Total \\(M=159.61+90.10=249.71\\ \\mathrm{g/mol}\\)','\\(\\%\\,\\ce{H2O}=\\dfrac{90.10}{249.71}\\times100\\)'],
+ a:'\\(36.08\\%\\) water'},
+{q:'How many grams of \\(\\ce{KNO3}\\) must be applied to deliver \\(10.0\\ \\mathrm{g}\\) of nitrogen?',
+ s:['\\(M=39.10+14.01+3(16.00)=101.11\\ \\mathrm{g/mol}\\)','\\(\\%\\,\\ce{N}=\\dfrac{14.01}{101.11}\\times100=13.86\\%\\), so the decimal is \\(0.1386\\).','This is the reverse direction: \\(\\text{sample}=\\dfrac{\\text{element mass}}{\\text{decimal}}=\\dfrac{10.0}{0.1386}\\)'],
+ a:'\\(72.2\\ \\mathrm{g}\\ \\ce{KNO3}\\)'},
+{h:'Mole calculations'},
+{q:'How many moles are in \\(45.0\\ \\mathrm{g}\\) of \\(\\ce{CO2}\\)?',
+ s:['\\(M_{\\ce{CO2}}=12.01+2(16.00)=44.01\\ \\mathrm{g/mol}\\)','\\(n=\\dfrac{45.0}{44.01}=1.0225\\ldots\\)','3 sig figs, from \\(45.0\\).'],
+ a:'\\(1.02\\ \\mathrm{mol}\\)'},
+{q:'How many molecules of water are in \\(2.50\\ \\mathrm{g}\\) of \\(\\ce{H2O}\\)?',
+ s:['\\(n=\\dfrac{2.50}{18.02}=0.13873\\ \\mathrm{mol}\\)','\\(N=(0.13873)(6.022\\times10^{23})=8.3546\\times10^{22}\\)','Round to 3 sig figs.'],
+ a:'\\(8.35\\times10^{22}\\) molecules'},
+{q:'What is the mass of \\(3.75\\times10^{22}\\) atoms of copper?',
+ s:['\\(n=\\dfrac{3.75\\times10^{22}}{6.022\\times10^{23}}=0.062272\\ \\mathrm{mol}\\)','\\(m=(0.062272)(63.55)=3.9574\\ \\mathrm{g}\\)'],
+ a:'\\(3.96\\ \\mathrm{g}\\ \\ce{Cu}\\)'},
+{q:'How many oxygen atoms are in \\(12.0\\ \\mathrm{g}\\) of \\(\\ce{Al2(SO4)3}\\)?',
+ s:['\\(M=2(26.98)+3(32.06)+12(16.00)=342.14\\ \\mathrm{g/mol}\\)','\\(n_{\\text{compound}}=\\dfrac{12.0}{342.14}=0.035074\\ \\mathrm{mol}\\)','Each formula unit holds 12 O, so \\(n_{\\ce{O}}=12(0.035074)=0.42089\\ \\mathrm{mol}\\)','\\(N=(0.42089)(6.022\\times10^{23})\\)'],
+ a:'\\(2.53\\times10^{23}\\) oxygen atoms'},
+{q:'What is the mass of \\(0.250\\ \\mathrm{mol}\\) of \\(\\ce{Ca(OH)2}\\)?',
+ s:['\\(M=40.08+2(16.00)+2(1.008)=74.10\\ \\mathrm{g/mol}\\)','Note the subscript 2 applies to the whole hydroxide group: 2 O and 2 H.','\\(m=nM=(0.250)(74.10)\\)'],
+ a:'\\(18.5\\ \\mathrm{g}\\)'},
+{q:'How many moles of IONS are produced when \\(0.500\\ \\mathrm{mol}\\) of \\(\\ce{Al2(SO4)3}\\) fully dissolves?',
+ s:['Dissociation: \\(\\ce{Al2(SO4)3(s) -> 2Al^3+(aq) + 3SO4^2-(aq)}\\)','Each formula unit releases \\(2+3=5\\) ions.','\\(n_{\\text{ions}}=5(0.500\\ \\mathrm{mol})\\)'],
+ a:'\\(2.50\\ \\mathrm{mol}\\) of ions'},
+{q:'How many ATOMS in total are in \\(5.00\\ \\mathrm{g}\\) of \\(\\ce{NH3}\\)?',
+ s:['\\(M=14.01+3(1.008)=17.03\\ \\mathrm{g/mol}\\)','\\(n=\\dfrac{5.00}{17.03}=0.2935\\ \\mathrm{mol}\\) of molecules','Each molecule has 4 atoms (1 N + 3 H), so \\(n_{\\text{atoms}}=4(0.2935)=1.174\\ \\mathrm{mol}\\)','\\(N=(1.174)(6.022\\times10^{23})\\)'],
+ a:'\\(7.07\\times10^{23}\\) atoms'},
+{q:'A \\(1.98\\ \\mathrm{g}\\) sample of an unknown gas contains \\(0.0450\\ \\mathrm{mol}\\). Calculate its molar mass and suggest an identity.',
+ s:['\\(M=\\dfrac{m}{n}=\\dfrac{1.98\\ \\mathrm{g}}{0.0450\\ \\mathrm{mol}}=44.0\\ \\mathrm{g/mol}\\)','Now match that mass to a common gas.'],
+ a:'\\(44.0\\ \\mathrm{g/mol}\\) — consistent with \\(\\ce{CO2}\\) \\((44.01)\\). Note \\(\\ce{N2O}\\) \\((44.02)\\) and \\(\\ce{C3H8}\\) \\((44.09)\\) also fit, so molar mass alone cannot fully identify it.'},
+{q:'Which contains more atoms: \\(10.0\\ \\mathrm{g}\\) of helium or \\(10.0\\ \\mathrm{g}\\) of neon?',
+ s:['\\(n_{\\ce{He}}=\\dfrac{10.0}{4.003}=2.50\\ \\mathrm{mol}\\)','\\(n_{\\ce{Ne}}=\\dfrac{10.0}{20.18}=0.496\\ \\mathrm{mol}\\)','Both are monatomic, so moles map directly to atoms.'],
+ a:'Helium, by about \\(5\\times\\). Equal masses do not mean equal numbers of atoms — the lighter element always gives more.'},
+{h:'Empirical &amp; molecular formulas'},
+{q:'A compound is 40.0% C, 6.7% H, and 53.3% O by mass. Its molar mass is \\(180.\\ \\mathrm{g/mol}\\). Find the empirical and molecular formulas.',
+ s:['Assume \\(100\\ \\mathrm{g}\\): \\(40.0\\ \\mathrm{g}\\) C, \\(6.7\\ \\mathrm{g}\\) H, \\(53.3\\ \\mathrm{g}\\) O.','\\(n_{\\ce{C}}=\\dfrac{40.0}{12.01}=3.330\\), \\(n_{\\ce{H}}=\\dfrac{6.7}{1.008}=6.65\\), \\(n_{\\ce{O}}=\\dfrac{53.3}{16.00}=3.331\\)','Divide by the smallest \\((3.330)\\): C \\(=1.00\\), H \\(=2.00\\), O \\(=1.00\\).','Empirical \\(\\ce{CH2O}\\), empirical mass \\(=30.03\\).','\\(n=\\dfrac{180.}{30.03}=5.99\\approx6\\)'],
+ a:'Empirical \\(\\ce{CH2O}\\); molecular \\(\\ce{C6H12O6}\\) (glucose)'},
+{q:'A \\(2.50\\ \\mathrm{g}\\) sample of an iron oxide contains \\(1.75\\ \\mathrm{g}\\) Fe and \\(0.750\\ \\mathrm{g}\\) O. Determine its empirical formula.',
+ s:['\\(n_{\\ce{Fe}}=\\dfrac{1.75}{55.85}=0.03134\\)','\\(n_{\\ce{O}}=\\dfrac{0.750}{16.00}=0.04688\\)','Divide by the smallest: Fe \\(=1.00\\), O \\(=1.496\\approx1.50\\).','A \\(.50\\) means multiply both by 2, giving Fe \\(=2\\), O \\(=3\\).'],
+ a:'\\(\\ce{Fe2O3}\\)'},
+{q:'A compound is 26.6% K, 35.4% Cr, and 38.1% O. Find its empirical formula.',
+ s:['\\(n_{\\ce{K}}=\\dfrac{26.6}{39.10}=0.6803\\), \\(n_{\\ce{Cr}}=\\dfrac{35.4}{52.00}=0.6808\\), \\(n_{\\ce{O}}=\\dfrac{38.1}{16.00}=2.381\\)','Divide by \\(0.6803\\): K \\(=1.00\\), Cr \\(=1.00\\), O \\(=3.50\\).','The \\(.50\\) forces \\(\\times2\\), giving K \\(=2\\), Cr \\(=2\\), O \\(=7\\).'],
+ a:'\\(\\ce{K2Cr2O7}\\) (potassium dichromate)'},
+{q:'\\(5.00\\ \\mathrm{g}\\) of a copper(II) sulfate hydrate is heated, leaving \\(3.20\\ \\mathrm{g}\\) of anhydrous \\(\\ce{CuSO4}\\). Find the formula of the hydrate.',
+ s:['\\(m_{\\ce{H2O}}=5.00-3.20=1.80\\ \\mathrm{g}\\)','\\(n_{\\ce{H2O}}=\\dfrac{1.80}{18.02}=0.0999\\ \\mathrm{mol}\\)','\\(M_{\\ce{CuSO4}}=63.55+32.06+64.00=159.61\\), so \\(n=\\dfrac{3.20}{159.61}=0.02005\\ \\mathrm{mol}\\)','\\(x=\\dfrac{0.0999}{0.02005}=4.98\\approx5\\)'],
+ a:'\\(\\ce{CuSO4.5H2O}\\)'},
+{q:'A compound is 62.1% C, 10.4% H, and 27.6% O, with a molar mass of \\(116\\ \\mathrm{g/mol}\\). Find the empirical and molecular formulas.',
+ s:['Assume \\(100\\ \\mathrm{g}\\). \\(n_{\\ce{C}}=\\dfrac{62.1}{12.01}=5.171\\), \\(n_{\\ce{H}}=\\dfrac{10.4}{1.008}=10.32\\), \\(n_{\\ce{O}}=\\dfrac{27.6}{16.00}=1.725\\)','Divide by \\(1.725\\): C \\(=3.00\\), H \\(=5.98\\approx6\\), O \\(=1.00\\).','Empirical \\(\\ce{C3H6O}\\), empirical mass \\(=58.08\\).','\\(n=\\dfrac{116}{58.08}=2.00\\)'],
+ a:'Empirical \\(\\ce{C3H6O}\\); molecular \\(\\ce{C6H12O2}\\)'},
+{q:'Combustion: \\(0.500\\ \\mathrm{g}\\) of a hydrocarbon burns completely to give \\(1.50\\ \\mathrm{g}\\) of \\(\\ce{CO2}\\) and \\(0.817\\ \\mathrm{g}\\) of \\(\\ce{H2O}\\). Find the empirical formula.',
+ s:['All carbon ends up in \\(\\ce{CO2}\\): \\(n_{\\ce{C}}=n_{\\ce{CO2}}=\\dfrac{1.50}{44.01}=0.03408\\ \\mathrm{mol}\\)','All hydrogen ends up in \\(\\ce{H2O}\\), 2 H per molecule: \\(n_{\\ce{H}}=2\\left(\\dfrac{0.817}{18.02}\\right)=0.09068\\ \\mathrm{mol}\\)','Divide by the smallest: C \\(=1.00\\), H \\(=2.66\\).','A \\(.67\\) means multiply by 3: C \\(=3\\), H \\(=8\\).'],
+ a:'\\(\\ce{C3H8}\\) (propane)'},
+{q:'\\(3.00\\ \\mathrm{g}\\) of a barium chloride hydrate is heated to constant mass, leaving \\(2.56\\ \\mathrm{g}\\) of anhydrous \\(\\ce{BaCl2}\\). Find \\(x\\) in \\(\\ce{BaCl2.$x$H2O}\\).',
+ s:['\\(m_{\\ce{H2O}}=3.00-2.56=0.44\\ \\mathrm{g}\\)','\\(n_{\\ce{H2O}}=\\dfrac{0.44}{18.02}=0.0244\\ \\mathrm{mol}\\)','\\(M_{\\ce{BaCl2}}=137.33+2(35.45)=208.23\\), so \\(n=\\dfrac{2.56}{208.23}=0.01229\\ \\mathrm{mol}\\)','\\(x=\\dfrac{0.0244}{0.01229}=1.99\\approx2\\)'],
+ a:'\\(\\ce{BaCl2.2H2O}\\)'},
+{q:'A \\(1.000\\ \\mathrm{g}\\) sample of a nitrogen–oxygen compound contains \\(0.304\\ \\mathrm{g}\\) of nitrogen. Its molar mass is \\(92\\ \\mathrm{g/mol}\\). Find the empirical and molecular formulas.',
+ s:['Mass of O \\(=1.000-0.304=0.696\\ \\mathrm{g}\\) (get it by difference, never by assuming).','\\(n_{\\ce{N}}=\\dfrac{0.304}{14.01}=0.02170\\), \\(n_{\\ce{O}}=\\dfrac{0.696}{16.00}=0.04350\\)','Divide by the smallest: N \\(=1.00\\), O \\(=2.00\\).','Empirical \\(\\ce{NO2}\\), empirical mass \\(=46.01\\); \\(n=\\dfrac{92}{46.01}=2.00\\)'],
+ a:'Empirical \\(\\ce{NO2}\\); molecular \\(\\ce{N2O4}\\)'},
+{q:'A phosphorus oxide is 43.7% P and 56.3% O. Determine its empirical formula.',
+ s:['\\(n_{\\ce{P}}=\\dfrac{43.7}{30.97}=1.411\\), \\(n_{\\ce{O}}=\\dfrac{56.3}{16.00}=3.519\\)','Divide by \\(1.411\\): P \\(=1.00\\), O \\(=2.49\\approx2.50\\).','Do NOT round \\(2.49\\) to 2 — a \\(.50\\) means multiply both by 2.'],
+ a:'\\(\\ce{P2O5}\\) (the molecular formula is actually \\(\\ce{P4O10}\\))'},
+{h:'Net ionic equations'},
+{q:'Write the net ionic equation: \\(\\ce{AgNO3(aq) + NaCl(aq) ->}\\)',
+ s:['Products are \\(\\ce{AgCl}\\) and \\(\\ce{NaNO3}\\). \\(\\ce{AgCl}\\) is insoluble (silver is a halide exception); \\(\\ce{NaNO3}\\) is soluble.','Complete ionic: \\(\\ce{Ag+ + NO3- + Na+ + Cl- -> AgCl(s) + Na+ + NO3-}\\)','Cancel \\(\\ce{Na+}\\) and \\(\\ce{NO3-}\\).'],
+ a:'\\(\\ce{Ag+(aq) + Cl-(aq) -> AgCl(s)}\\)'},
+{q:'Write the net ionic equation: \\(\\ce{Ba(NO3)2(aq) + Na2SO4(aq) ->}\\)',
+ s:['\\(\\ce{BaSO4}\\) is insoluble (barium is a sulfate exception).','Spectators are \\(\\ce{Na+}\\) and \\(\\ce{NO3-}\\).'],
+ a:'\\(\\ce{Ba^2+(aq) + SO4^2-(aq) -> BaSO4(s)}\\)'},
+{q:'Write the net ionic equation: \\(\\ce{HCl(aq) + NaOH(aq) ->}\\)',
+ s:['\\(\\ce{HCl}\\) is a strong acid and \\(\\ce{NaOH}\\) a strong base, so both fully dissociate.','Spectators are \\(\\ce{Na+}\\) and \\(\\ce{Cl-}\\) (\\(\\ce{NaCl}\\) is soluble).'],
+ a:'\\(\\ce{H+(aq) + OH-(aq) -> H2O(l)}\\)'},
+{q:'Write the net ionic equation: \\(\\ce{CH3COOH(aq) + NaOH(aq) ->}\\)',
+ s:['Acetic acid is WEAK — do not split it. Write it molecular.','\\(\\ce{NaOH}\\) is strong, so it becomes \\(\\ce{Na+ + OH-}\\); sodium acetate is soluble, so it splits too.','Only \\(\\ce{Na+}\\) is a spectator.'],
+ a:'\\(\\ce{CH3COOH(aq) + OH-(aq) -> CH3COO-(aq) + H2O(l)}\\)'},
+{q:'Write the net ionic equation: \\(\\ce{Na2CO3(aq) + HCl(aq) ->}\\)',
+ s:['Carbonate plus acid gives carbonic acid, which decomposes to water and \\(\\ce{CO2}\\) gas.','Balance: 2 \\(\\ce{H+}\\) are needed per carbonate.','Spectators are \\(\\ce{Na+}\\) and \\(\\ce{Cl-}\\).'],
+ a:'\\(\\ce{CO3^2-(aq) + 2H+(aq) -> H2O(l) + CO2(g)}\\)'},
+{q:'What happens when \\(\\ce{K2SO4(aq)}\\) and \\(\\ce{NaCl(aq)}\\) are mixed? Write the net ionic equation.',
+ s:['Possible products are \\(\\ce{KCl}\\) and \\(\\ce{Na2SO4}\\).','\\(\\ce{KCl}\\) is soluble (group 1). \\(\\ce{Na2SO4}\\) is soluble (group 1).','No precipitate, no gas, no water forms — every ion appears unchanged on both sides.'],
+ a:'No reaction. All four ions are spectators.'},
+{q:'Write the net ionic equation: \\(\\ce{Mg(s) + HCl(aq) ->}\\)',
+ s:['Single replacement: Mg is above H in the activity series, so it displaces hydrogen.','\\(\\ce{Mg(s)}\\) stays solid — do not split it. \\(\\ce{H2}\\) is a gas — do not split it.','Balanced: \\(\\ce{Mg(s) + 2H+(aq) -> Mg^2+(aq) + H2(g)}\\)','Charge check: \\(0+2(+1)=+2\\) on the left; \\(+2+0=+2\\) on the right. ✓'],
+ a:'\\(\\ce{Mg(s) + 2H+(aq) -> Mg^2+(aq) + H2(g)}\\)'},
+{q:'Write the net ionic equation: \\(\\ce{Pb(NO3)2(aq) + KI(aq) ->}\\)',
+ s:['Products are \\(\\ce{PbI2}\\) and \\(\\ce{KNO3}\\). Lead is an iodide exception, so \\(\\ce{PbI2}\\) is the precipitate (bright yellow).','Balance the charges: one \\(\\ce{Pb^2+}\\) needs two \\(\\ce{I-}\\).','Spectators are \\(\\ce{K+}\\) and \\(\\ce{NO3-}\\).'],
+ a:'\\(\\ce{Pb^2+(aq) + 2I-(aq) -> PbI2(s)}\\)'},
+{q:'Write the net ionic equation: \\(\\ce{NH3(aq) + HCl(aq) ->}\\)',
+ s:['\\(\\ce{NH3}\\) is a WEAK base — keep it molecular.','\\(\\ce{HCl}\\) is a strong acid, so it splits into \\(\\ce{H+ + Cl-}\\).','The product \\(\\ce{NH4Cl}\\) is soluble, so it splits into \\(\\ce{NH4+ + Cl-}\\).','Only \\(\\ce{Cl-}\\) is a spectator. Note that no water is formed here.'],
+ a:'\\(\\ce{NH3(aq) + H+(aq) -> NH4+(aq)}\\)'},
+{q:'Write the net ionic equation: \\(\\ce{CaCO3(s) + HCl(aq) ->}\\)',
+ s:['This is the classic trap: \\(\\ce{CaCO3}\\) is INSOLUBLE, so it stays as a solid and does NOT split into ions.','\\(\\ce{HCl}\\) splits. The products are \\(\\ce{CaCl2(aq)}\\) (soluble, splits), water, and \\(\\ce{CO2}\\) gas.','Only \\(\\ce{Cl-}\\) is a spectator.','Charge check: \\(0+2(+1)=+2\\) on the left; \\(+2\\) on the right. ✓'],
+ a:'\\(\\ce{CaCO3(s) + 2H+(aq) -> Ca^2+(aq) + H2O(l) + CO2(g)}\\)'},
+{q:'Write the net ionic equation: \\(\\ce{Ba(OH)2(aq) + H2SO4(aq) ->}\\)',
+ s:['Both are strong electrolytes, so both split.','\\(\\ce{BaSO4}\\) is insoluble (precipitate) AND water forms — two driving forces at once.','Complete ionic: \\(\\ce{Ba^2+ + 2OH- + 2H+ + SO4^2- -> BaSO4(s) + 2H2O(l)}\\)','Nothing cancels: there are no spectator ions at all.'],
+ a:'\\(\\ce{Ba^2+(aq) + 2OH-(aq) + 2H+(aq) + SO4^2-(aq) -> BaSO4(s) + 2H2O(l)}\\) — here the net ionic equation is identical to the complete ionic equation.'},
+{q:'Write the net ionic equation: \\(\\ce{Zn(s) + CuSO4(aq) ->}\\)',
+ s:['Single replacement: Zn is above Cu in the activity series, so it displaces copper.','\\(\\ce{Zn(s)}\\) and \\(\\ce{Cu(s)}\\) are solids — keep both whole.','\\(\\ce{SO4^2-}\\) is the only spectator.','Charge check: \\(0+2=+2\\) on the left; \\(+2+0=+2\\) on the right. ✓'],
+ a:'\\(\\ce{Zn(s) + Cu^2+(aq) -> Zn^2+(aq) + Cu(s)}\\)'},
+{h:'Alloys'},
+{q:'Brass is copper with zinc; steel is iron with carbon. Classify each alloy type and justify using atomic size.',
+ s:['Cu \\((r\\approx128\\ \\mathrm{pm})\\) and Zn \\((r\\approx134\\ \\mathrm{pm})\\) differ by under 15%, so Zn atoms can replace Cu atoms in the lattice.','C \\((r\\approx77\\ \\mathrm{pm})\\) is far smaller than Fe \\((r\\approx126\\ \\mathrm{pm})\\), so C atoms fit into the gaps between Fe atoms.'],
+ a:'Brass is substitutional (similar radii, atoms swap positions). Steel is interstitial (much smaller C occupies holes in the Fe lattice).'},
+{q:'Explain why sterling silver (92.5% Ag, 7.5% Cu) is harder and more durable than pure silver, even though both are metal atoms in an electron sea.',
+ s:['Pure Ag has a uniform lattice of identical atoms arranged in regular layers.','Under stress those layers slide over one another easily — this is malleability, and it is why pure silver deforms so readily.','Copper atoms are a slightly different size, so they distort the regular arrangement.'],
+ a:'The differently sized Cu atoms disrupt the regular lattice, so layers of atoms can no longer slide past one another easily. Resisting that slip makes the alloy harder and less malleable, while metallic bonding — and therefore conductivity and luster — is preserved.'},
+{q:'Copper has an atomic radius of about \\(128\\ \\mathrm{pm}\\) and silver about \\(144\\ \\mathrm{pm}\\). Predict what kind of alloy they form, and show the reasoning.',
+ s:['Apply the size rule: substitutional alloys need radii within roughly 15% of each other.','\\(\\dfrac{144-128}{128}\\times100=12.5\\%\\)','\\(12.5\\%<15\\%\\), so the atoms are close enough in size to swap lattice positions.','Silver is also far too large to sit in an interstitial hole.'],
+ a:'Substitutional. The radii differ by only \\(12.5\\%\\), inside the ~15% limit, so Cu and Ag atoms replace one another in the lattice — this is exactly what sterling silver is.'},
+{q:'Adding carbon to iron makes steel harder than pure iron, but high-carbon steel is also more brittle. Explain both effects in terms of the lattice.',
+ s:['Carbon atoms lodge in the interstitial holes between iron atoms.','They pin the lattice so layers of Fe atoms cannot slide past one another — this is the hardening.','But malleability IS that sliding. Removing the ability to slide removes the metal\'s ability to deform under stress.','A material that cannot deform must instead crack when overloaded.'],
+ a:'Interstitial carbon blocks the slipping of atomic layers, which raises hardness and strength. The same blocking removes malleability, so instead of bending under stress the material fractures — hardness and brittleness rise together.'},
+{q:'Would you expect brass to conduct electricity better or worse than pure copper? Explain.',
+ s:['Both are metals with a sea of delocalized electrons, so both conduct.','Conduction requires electrons to move freely through a regular lattice.','Zinc atoms of a different size make the lattice irregular, which scatters the moving electrons.'],
+ a:'Worse. Brass still conducts (metallic bonding is intact), but the irregular lattice scatters the delocalized electrons more, raising resistance. This is why wiring uses pure copper while brass is used where strength and corrosion resistance matter more.'},
+{q:'Dental amalgam is mercury combined with a silver–tin alloy. Classify it, and explain why an alloy can be described as a solution.',
+ s:['Mercury \\((r\\approx151\\ \\mathrm{pm})\\), silver \\((\\approx144)\\) and tin \\((\\approx140)\\) are all similar in size, so the atoms substitute for one another.','An alloy is a homogeneous mixture of metals, not a compound with a fixed formula.','Because the composition can vary continuously and the mixing is uniform at the atomic level, it fits the definition of a solid solution.'],
+ a:'Substitutional. Alloys are called solid solutions because the components mix homogeneously at the atomic level in variable — not fixed — proportions, which is also why most alloys melt over a range rather than at one sharp temperature. (Real dental amalgam is more complicated — it contains intermetallic phases such as \\(\\ce{Ag2Hg3}\\) — but the substitutional model is the expected answer.)'},
+{q:'Bronze is about 88% Cu and 12% Sn by mass. (a) How many grams of tin are in a \\(250\\ \\mathrm{g}\\) casting? (b) Given \\(r_{\\ce{Cu}}\\approx128\\ \\mathrm{pm}\\) and \\(r_{\\ce{Sn}}\\approx140\\ \\mathrm{pm}\\), classify the alloy.',
+ s:['(a) Percent by mass works the same way for a mixture as for a compound: convert to a decimal and multiply.','\\(m_{\\ce{Sn}}=(0.12)(250\\ \\mathrm{g})=30\\ \\mathrm{g}\\)','(b) Size difference: \\(\\dfrac{140-128}{128}\\times100=9.4\\%\\)','\\(9.4\\%<15\\%\\), so tin atoms are close enough in size to take copper\'s place in the lattice.'],
+ a:'(a) \\(30\\ \\mathrm{g}\\) of tin. (b) Substitutional — the radii differ by only \\(9.4\\%\\). Note that an alloy has a variable composition, which is exactly why bronze is described as "about" 88:12 rather than by a fixed formula.'},
+{h:'Mass spectrometry'},
+{q:'Chlorine has two isotopes: \\(\\ce{^{35}Cl}\\) (mass \\(34.969\\), abundance \\(75.76\\%\\)) and \\(\\ce{^{37}Cl}\\) (mass \\(36.966\\), abundance \\(24.24\\%\\)). Calculate the average atomic mass.',
+ s:['Convert percentages to decimals: \\(0.7576\\) and \\(0.2424\\).','\\((0.7576)(34.969)=26.493\\)','\\((0.2424)(36.966)=8.961\\)','Sum them.'],
+ a:'\\(35.45\\ \\mathrm{amu}\\) — close to 35 because \\(\\ce{^{35}Cl}\\) dominates.'},
+{q:'A mass spectrum of element X shows two peaks: \\(m/z=62.93\\) at \\(69.15\\%\\) and \\(m/z=64.93\\) at \\(30.85\\%\\). Calculate the average atomic mass and identify X.',
+ s:['\\((0.6915)(62.93)=43.516\\)','\\((0.3085)(64.93)=20.031\\)','Sum \\(=63.55\\ \\mathrm{amu}\\)','Look up which element has that atomic mass.'],
+ a:'\\(63.55\\ \\mathrm{amu}\\), so X is copper \\((\\ce{Cu})\\).'},
+{q:'Boron has two isotopes, \\(\\ce{^{10}B}\\) (mass \\(10.013\\)) and \\(\\ce{^{11}B}\\) (mass \\(11.009\\)), and an average atomic mass of \\(10.81\\). Calculate the percent abundance of each.',
+ s:['Let \\(x\\) be the fraction \\(\\ce{^{10}B}\\), so \\(1-x\\) is \\(\\ce{^{11}B}\\).','\\(x(10.013)+(1-x)(11.009)=10.81\\)','\\(11.009-0.996x=10.81\\)','\\(0.996x=0.199\\), so \\(x=0.1998\\)','Sanity check: \\(10.81\\) is much closer to 11 than to 10, so \\(\\ce{^{11}B}\\) should be the majority. ✓'],
+ a:'\\(20.0\\%\\ \\ce{^{10}B}\\) and \\(80.0\\%\\ \\ce{^{11}B}\\)'},
+{q:'Magnesium has three isotopes: \\(23.985\\) at \\(78.99\\%\\), \\(24.986\\) at \\(10.00\\%\\), and \\(25.982\\) at \\(11.01\\%\\). Calculate the average atomic mass.',
+ s:['Three isotopes work exactly the same way — one term per peak.','\\((0.7899)(23.985)=18.946\\)','\\((0.1000)(24.986)=2.499\\)','\\((0.1101)(25.982)=2.861\\)','Sum all three.'],
+ a:'\\(24.30\\ \\mathrm{amu}\\) \\((24.305)\\) — the periodic-table value for magnesium, usually printed as \\(24.31\\). Note that adding the three rounded terms instead gives \\(24.306\\); carry full precision and round once at the end.'},
+{q:'Silicon has three isotopes: \\(\\ce{^{28}Si}\\) \\((27.977)\\) at \\(92.23\\%\\), \\(\\ce{^{29}Si}\\) \\((28.976)\\) at \\(4.67\\%\\), and \\(\\ce{^{30}Si}\\) \\((29.974)\\) at \\(3.10\\%\\). Calculate the average atomic mass, and explain why it lies so close to 28.',
+ s:['\\((0.9223)(27.977)=25.803\\)','\\((0.0467)(28.976)=1.353\\)','\\((0.0310)(29.974)=0.929\\)','Sum \\(=28.09\\ \\mathrm{amu}\\)','Check the abundances before you interpret: one isotope holds over 92% of the total.'],
+ a:'\\(28.09\\ \\mathrm{amu}\\). It sits almost on top of 28 because \\(\\ce{^{28}Si}\\) makes up \\(92.23\\%\\) of all silicon — the two heavier isotopes barely shift the weighted average.'},
+{q:'An element has two isotopes of mass \\(68.926\\) and \\(70.925\\), and an average atomic mass of \\(69.72\\). Find the percent abundances and identify the element.',
+ s:['Let \\(x\\) be the fraction of the lighter isotope.','\\(x(68.926)+(1-x)(70.925)=69.72\\)','\\(70.925-1.999x=69.72\\)','\\(x=\\dfrac{1.205}{1.999}=0.6028\\)','The average sits just below the midpoint \\((69.93)\\), so the lighter isotope should be slightly more abundant. ✓'],
+ a:'\\(60.3\\%\\) of mass \\(68.926\\) and \\(39.7\\%\\) of mass \\(70.925\\). An average of \\(69.72\\) identifies it as gallium.'},
+{q:'The mass spectrum of \\(\\ce{Cl2}\\) shows three peaks, at \\(m/z=70\\), \\(72\\), and \\(74\\), with relative heights of roughly \\(9:6:1\\). Explain why.',
+ s:['Chlorine is \\(75.76\\%\\ \\ce{^{35}Cl}\\) and \\(24.24\\%\\ \\ce{^{37}Cl}\\) — call these roughly \\(3:1\\).','A \\(\\ce{Cl2}\\) molecule can be \\(\\ce{^{35}Cl^{35}Cl}\\) (mass 70), \\(\\ce{^{35}Cl^{37}Cl}\\) (mass 72), or \\(\\ce{^{37}Cl^{37}Cl}\\) (mass 74).','Probabilities: \\((0.7576)^2=0.574\\); \\(2(0.7576)(0.2424)=0.367\\) (the mixed pair forms two ways); \\((0.2424)^2=0.059\\).','Divide through by the smallest: \\(9.8:6.2:1\\approx9:6:1\\).'],
+ a:'The three peaks are the three possible isotope pairings. The middle peak is doubled because \\(\\ce{^{35}Cl^{37}Cl}\\) can form in two arrangements, giving the \\(9:6:1\\) pattern.'},
+{q:'Why do the isotopes of an element have identical chemical properties but appear at different positions in a mass spectrum?',
+ s:['Isotopes differ only in neutron count.','Chemical behavior is governed by electrons — specifically the valence electrons — and by nuclear charge.','Isotopes have the same number of protons, hence the same nuclear charge and the same electron configuration.','A mass spectrometer sorts by \\(m/z\\), which depends on mass, and the extra neutrons change the mass.'],
+ a:'Chemistry depends on electron configuration, which isotopes share; a mass spectrometer sorts by mass-to-charge ratio, which the extra neutrons change. Same chemistry, different mass.'}
+];
+
+var out=document.getElementById('qs'),n=0;
+P.forEach(function(item){
+  if(item.h){ var h=document.createElement('h2'); h.innerHTML=item.h; out.appendChild(h); return; }
+  n++;
+  var d=document.createElement('div'); d.className='q';
+  var steps=item.s.map(function(s){return '<li>'+s+'</li>'}).join('');
+  d.innerHTML='<div class="stem"><b>Q'+n+'.</b>'+item.q+'</div>'+
+    '<button class="rev">▸ Show worked solution</button>'+
+    '<div class="sol"><ol class="steps">'+steps+'</ol><span class="ans">Answer: '+item.a+'</span></div>';
+  var btn=d.querySelector('.rev'), sol=d.querySelector('.sol');
+  btn.onclick=function(){ sol.classList.toggle('on');
+    btn.textContent = sol.classList.contains('on') ? '▾ Hide solution' : '▸ Show worked solution'; };
+  out.appendChild(d);
+});
+document.getElementById('revall').onclick=function(){
+  var any=document.querySelector('.sol:not(.on)');
+  document.querySelectorAll('.q').forEach(function(q){
+    var s=q.querySelector('.sol'), b=q.querySelector('.rev');
+    if(any){ s.classList.add('on'); b.textContent='▾ Hide solution'; }
+    else { s.classList.remove('on'); b.textContent='▸ Show worked solution'; }
+  });
+  this.textContent = any ? 'Hide all' : 'Reveal all';
+};
+
+/* ---------- flashcards ---------- */
+var DECKS={
+ 'Polyatomic ions (must know cold)':[
+  ['Nitrate','\\(\\ce{NO3-}\\)'],['Nitrite','\\(\\ce{NO2-}\\)'],['Sulfate','\\(\\ce{SO4^2-}\\)'],['Sulfite','\\(\\ce{SO3^2-}\\)'],
+  ['Carbonate','\\(\\ce{CO3^2-}\\)'],['Bicarbonate / hydrogen carbonate','\\(\\ce{HCO3-}\\)'],['Phosphate','\\(\\ce{PO4^3-}\\)'],
+  ['Hydroxide','\\(\\ce{OH-}\\)'],['Ammonium','\\(\\ce{NH4+}\\)'],['Acetate','\\(\\ce{CH3COO-}\\) (or \\(\\ce{C2H3O2-}\\))'],
+  ['Chromate','\\(\\ce{CrO4^2-}\\)'],['Dichromate','\\(\\ce{Cr2O7^2-}\\)'],['Permanganate','\\(\\ce{MnO4-}\\)'],
+  ['Cyanide','\\(\\ce{CN-}\\)'],['Perchlorate','\\(\\ce{ClO4-}\\)'],['Chlorate','\\(\\ce{ClO3-}\\)'],['Chlorite','\\(\\ce{ClO2-}\\)'],['Hypochlorite','\\(\\ce{ClO-}\\)'],
+  ['Peroxide','\\(\\ce{O2^2-}\\)'],['Oxalate','\\(\\ce{C2O4^2-}\\)']
+ ],
+ 'Solubility rules':[
+  ['Are group 1 and \\(\\ce{NH4+}\\) salts soluble?','Always soluble — no exceptions you need.'],
+  ['Are nitrates \\((\\ce{NO3-})\\) soluble?','Always soluble.'],
+  ['Are acetates \\((\\ce{CH3COO-})\\) soluble?','Always soluble.'],
+  ['Chlorides, bromides, iodides — soluble?','Soluble EXCEPT with \\(\\ce{Ag+}\\), \\(\\ce{Pb^2+}\\), \\(\\ce{Hg2^2+}\\)'],
+  ['Sulfates \\((\\ce{SO4^2-})\\) — soluble?','Soluble EXCEPT with \\(\\ce{Ba^2+}\\), \\(\\ce{Pb^2+}\\), \\(\\ce{Ca^2+}\\), \\(\\ce{Sr^2+}\\), \\(\\ce{Ag+}\\)'],
+  ['Carbonates and phosphates — soluble?','INsoluble EXCEPT with group 1 or \\(\\ce{NH4+}\\)'],
+  ['Sulfides \\((\\ce{S^2-})\\) — soluble?','INsoluble EXCEPT with group 1, \\(\\ce{NH4+}\\), and group 2 \\((\\ce{CaS}, \\ce{SrS}, \\ce{BaS})\\)'],
+  ['Hydroxides \\((\\ce{OH-})\\) — soluble?','INsoluble EXCEPT group 1 and \\(\\ce{NH4+}\\). \\(\\ce{Ba(OH)2}\\) and \\(\\ce{Sr(OH)2}\\) are soluble enough to treat as strong bases; \\(\\ce{Ca(OH)2}\\) is only slightly soluble.'],
+  ['Is \\(\\ce{AgCl}\\) soluble?','No — precipitate. Silver is a halide exception.'],
+  ['Is \\(\\ce{BaSO4}\\) soluble?','No — precipitate. Barium is a sulfate exception.'],
+  ['Is \\(\\ce{PbI2}\\) soluble?','No — precipitate. Lead is a halide exception (bright yellow solid).'],
+  ['Is \\(\\ce{Na2CO3}\\) soluble?','Yes — group 1 overrides the carbonate rule.']
+ ],
+ 'Strong vs weak electrolytes':[
+  ['Name all 7 strong acids','\\(\\ce{HCl}\\), \\(\\ce{HBr}\\), \\(\\ce{HI}\\), \\(\\ce{HNO3}\\), \\(\\ce{H2SO4}\\), \\(\\ce{HClO4}\\), \\(\\ce{HClO3}\\)'],
+  ['Name the strong bases','Group 1 hydroxides \\((\\ce{LiOH}, \\ce{NaOH}, \\ce{KOH}\\ldots)\\) plus \\(\\ce{Ca(OH)2}\\), \\(\\ce{Sr(OH)2}\\), \\(\\ce{Ba(OH)2}\\)'],
+  ['Common weak acids?','\\(\\ce{HF}\\), \\(\\ce{CH3COOH}\\), \\(\\ce{H2CO3}\\), \\(\\ce{H3PO4}\\), \\(\\ce{HNO2}\\), \\(\\ce{HCN}\\) — write these MOLECULAR in ionic equations'],
+  ['In a complete ionic equation, what gets split?','Only strong electrolytes that are \\((aq)\\): soluble ionic compounds, strong acids, strong bases'],
+  ['What never gets split?','Solids \\((s)\\), liquids \\((l)\\), gases \\((g)\\), weak acids and bases, all molecular compounds'],
+  ['What is a spectator ion?','An ion identical and unchanged on both sides — cancel it out'],
+  ['Three driving forces for a reaction?','Formation of a precipitate, water, or a gas'],
+  ['\\(\\ce{HF}\\) is an acid — why keep it whole?','It is a WEAK acid; it barely dissociates, so it exists mostly as intact molecules'],
+  ['\\(\\ce{CaCO3}\\) reacting with acid — split it?','NO. It is insoluble, so it stays \\(\\ce{CaCO3(s)}\\) in the net ionic equation.'],
+  ['\\(\\ce{NH3}\\) reacting with \\(\\ce{HCl}\\) — split it?','NO. Ammonia is a weak base. The net ionic equation is \\(\\ce{NH3(aq) + H+(aq) -> NH4+(aq)}\\)']
+ ],
+ 'Formulas & definitions':[
+  ['\\(n=\\ ?\\)','\\(n=\\dfrac{m}{M}\\) — moles equal grams divided by molar mass'],
+  ['Avogadro’s number','\\(N_A=6.022\\times10^{23}\\) particles per mole'],
+  ['Percent composition formula','\\(\\%\\,\\text{element}=\\dfrac{\\text{mass of element in 1 mol}}{\\text{molar mass}}\\times100\\)'],
+  ['Empirical formula, in words','The simplest whole-number ratio of atoms in a compound'],
+  ['Molecular formula from empirical','\\(n=\\dfrac{\\text{molar mass}}{\\text{empirical formula mass}}\\); multiply all subscripts by \\(n\\)'],
+  ['Steps for an empirical formula','% → grams (assume \\(100\\ \\mathrm{g}\\)) → moles → divide by smallest → multiply to whole numbers'],
+  ['Mole ratio comes out as \\(.50\\) — what now?','Multiply everything by 2. \\((.33/.67\\to\\times3;\\ .25/.75\\to\\times4)\\)'],
+  ['Combustion analysis: where does the C come from?','\\(n_{\\ce{C}}=n_{\\ce{CO2}}\\), and \\(n_{\\ce{H}}=2\\,n_{\\ce{H2O}}\\); find O by difference'],
+  ['Sig figs: multiplication and division','Answer takes the FEWEST significant figures of the inputs'],
+  ['Sig figs: addition and subtraction','Answer takes the FEWEST decimal places of the inputs'],
+  ['Do exact numbers limit sig figs?','No — counted objects and defined conversions have infinite sig figs'],
+  ['Average atomic mass formula','\\(\\bar{A}=\\sum_i f_i A_i\\) — sum of (fractional abundance × isotope mass)'],
+  ['What does a mass spectrometer separate ions by?','Mass-to-charge ratio \\((m/z)\\) — lighter ions deflect more'],
+  ['Mass spectrum axes?','x-axis = mass \\((m/z)\\), y-axis = relative abundance'],
+  ['Where does average atomic mass fall?','Between the lightest and heaviest isotope masses, pulled toward the most abundant one'],
+  ['Why do isotopes behave identically in chemistry?','Same protons and electrons, so the same electron configuration; only neutron count differs'],
+  ['What is a hydrate?','An ionic compound with a fixed number of water molecules in its crystal lattice']
+ ],
+ 'Alloys':[
+  ['Definition of an alloy','A mixture of a metal with one or more other elements that retains metallic bonding'],
+  ['Substitutional alloy','Added atoms of similar size (within about 15% radius) REPLACE host atoms in the lattice'],
+  ['Interstitial alloy','Much smaller atoms (C, N, H, B) fit into HOLES between the host atoms'],
+  ['Brass','\\(\\ce{Cu}+\\ce{Zn}\\) — substitutional'],
+  ['Bronze','\\(\\ce{Cu}+\\ce{Sn}\\) — substitutional'],
+  ['Steel','\\(\\ce{Fe}+\\ce{C}\\) — interstitial'],
+  ['Sterling silver','92.5% \\(\\ce{Ag}\\) + 7.5% \\(\\ce{Cu}\\) — substitutional'],
+  ['Why are alloys harder than pure metals?','Different-sized atoms disrupt the regular lattice, so layers of atoms cannot slide past each other easily'],
+  ['Why do alloys stay conductive?','Metallic bonding and the sea of delocalized electrons are preserved'],
+  ['Does alloying raise or lower conductivity?','Lowers it slightly — the irregular lattice scatters the delocalized electrons'],
+  ['Melting point of an alloy vs pure metal?','Generally lower, and it melts over a RANGE rather than at one sharp temperature'],
+  ['Why is high-carbon steel brittle?','Interstitial C blocks layer slipping, so the metal cracks instead of deforming'],
+  ['Why is stainless steel corrosion-resistant?','Chromium forms a thin protective oxide layer on the surface']
+ ],
+ 'Lab review':[
+  ['Net ionic equation for the chloride lab','\\(\\ce{Ag+(aq) + Cl-(aq) -> AgCl(s)}\\)'],
+  ['Why use distilled, not tap, water?','Tap water contains chloride ions, which would inflate the measured \\(\\%\\,\\ce{Cl}\\)'],
+  ['Why add \\(\\ce{AgNO3}\\) in excess?','To ensure every chloride ion precipitates — complete precipitation'],
+  ['Why wash the \\(\\ce{AgCl}\\) with COLD water?','\\(\\ce{AgCl}\\) is slightly soluble; warm water would dissolve some and lower the mass'],
+  ['Why keep \\(\\ce{AgCl}\\) out of light?','It photodecomposes to grey silver metal, losing mass'],
+  ['Wet precipitate — effect on \\(\\%\\,\\ce{Cl}\\)?','Too HIGH — water mass is counted as \\(\\ce{AgCl}\\)'],
+  ['Some precipitate lost in filtering — effect?','Too LOW — less \\(\\ce{AgCl}\\) weighed than actually formed'],
+  ['"Heat to constant mass" means what?','Heat, cool, mass; repeat until two consecutive masses agree — proof all water is gone'],
+  ['Why cool the crucible in a desiccator?','Hot objects read low on a balance, and the anhydrous salt reabsorbs atmospheric water'],
+  ['Underheated hydrate — effect on \\(x\\)?','Too LOW — less mass lost, so less water counted'],
+  ['Overheated (salt decomposed) — effect on \\(x\\)?','Too HIGH — extra lost mass is wrongly credited to water'],
+  ['Sample spattered out — effect on \\(x\\)?','Too HIGH — lost solid registers as lost water'],
+  ['How do you find \\(x\\) in \\(\\ce{MgSO4.$x$H2O}\\)?','\\(x=\\dfrac{n_{\\ce{H2O}}}{n_{\\text{anhydrous salt}}}\\), rounded to the nearest whole number']
+ ]
+};
+
+var sel=document.getElementById('deck'), fcEl=document.getElementById('fc'),
+    cnt=document.getElementById('count'), cur=[], i=0, back=false;
+Object.keys(DECKS).forEach(function(k){
+  var o=document.createElement('option'); o.value=k; o.textContent=k+' ('+DECKS[k].length+')'; sel.appendChild(o);
+});
+function render(){
+  if(!cur.length) return;
+  var c=cur[i];
+  fcEl.className='fc'+(back?' back':'');
+  fcEl.innerHTML='<div>'+(back?c[1]:c[0])+'<small>'+(back?'answer':'click to flip')+'</small></div>';
+  cnt.textContent=(i+1)+' / '+cur.length;
+  typeset(fcEl);
+}
+function load(){ cur=DECKS[sel.value].slice(); i=0; back=false; render(); }
+sel.onchange=load;
+fcEl.onclick=function(){ back=!back; render(); };
+document.getElementById('flipbtn').onclick=function(){ back=!back; render(); };
+document.getElementById('next').onclick=function(){ i=(i+1)%cur.length; back=false; render(); };
+document.getElementById('prev').onclick=function(){ i=(i-1+cur.length)%cur.length; back=false; render(); };
+document.getElementById('shuf').onclick=function(){
+  for(var j=cur.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1));var t=cur[j];cur[j]=cur[k];cur[k]=t;}
+  i=0;back=false;render();
+};
+load();
+
+/* ---------- checklist ---------- */
+var ITEMS=[
+ 'Count sig figs in a number with leading and trailing zeros',
+ 'Apply the right sig fig rule to a mixed calculation',
+ 'Know why subtracting two close numbers destroys precision',
+ 'Convert grams ⇄ moles ⇄ particles in either direction',
+ 'Count atoms of one element inside a compound with parentheses',
+ 'Find moles of ions released when an ionic compound dissolves',
+ 'Calculate percent composition of any element in any formula',
+ 'Work percent composition backwards to a required sample mass',
+ 'Run the five-step empirical formula algorithm from percentages',
+ 'Recognize \\(.50\\), \\(.33\\), \\(.25\\) ratios and know what to multiply by',
+ 'Get an empirical formula from combustion data',
+ 'Get a molecular formula from an empirical formula plus molar mass',
+ 'Recite the solubility rules and their exceptions',
+ 'List all seven strong acids and the strong bases',
+ 'Decide what splits into ions and what stays whole',
+ 'Write a net ionic equation with correct states and balanced charge',
+ 'Recognize when there is no reaction, and explain why',
+ 'Handle an insoluble solid or a weak electrolyte in an ionic equation',
+ 'Distinguish substitutional from interstitial alloys with examples',
+ 'Explain in lattice terms why alloys are harder than pure metals',
+ 'Explain alloy conductivity and melting behavior',
+ 'Calculate average atomic mass from isotope masses and abundances',
+ 'Work backwards from average atomic mass to percent abundances',
+ 'Explain each step of the unknown chloride lab and its purpose',
+ 'Predict the direction of error for any mistake in either lab',
+ 'Find \\(x\\) in a hydrate from before-and-after masses'
+];
+var cl=document.getElementById('checklist'), sc=document.getElementById('score');
+ITEMS.forEach(function(t,idx){
+  var d=document.createElement('div'); d.className='chk';
+  d.innerHTML='<input type="checkbox" id="c'+idx+'"><label for="c'+idx+'">'+t+'</label>';
+  d.querySelector('input').onchange=tally;
+  cl.appendChild(d);
+});
+function tally(){
+  var all=cl.querySelectorAll('input'), done=cl.querySelectorAll('input:checked').length;
+  sc.textContent = done+' of '+all.length+' solid'+(done===all.length?' — full coverage.':'');
+}
+tally();
+
+/* ---------- render all math ---------- */
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',function(){typeset(document.body);});
+}else{
+  typeset(document.body);
+}
+</script>
+</body>
+</html>

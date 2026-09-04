@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AP Chemistry — Study Pages</title>
+<meta name="description" content="Interactive AP Chemistry study pages: review sheets, practice problems with worked solutions, flashcards, and lab review.">
+<style>
+  html[data-theme="dark"]{
+    --bg:#12151a; --card:#1b1f26; --ink:#e7ebf0; --muted:#96a1b0;
+    --line:#2b323c; --accent:#79b8d8; --accent-soft:#1c2932; --accent-ink:#0f1418;
+    --chip:#232a33; --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+  html[data-theme="light"]{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1a1d21; --muted:#5f6875;
+    --line:#e2e6ec; --accent:#2f6f8f; --accent-soft:#e8f1f6; --accent-ink:#ffffff;
+    --chip:#f0f3f6; --shadow:0 1px 2px rgba(16,24,40,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       transition:background .18s ease,color .18s ease;}
+  .wrap{max-width:760px;margin:0 auto;padding:56px 20px 80px}
+  .top{display:flex;align-items:flex-start;gap:16px;margin-bottom:8px}
+  h1{font-size:30px;margin:0;flex:1}
+  #theme{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;
+      padding:6px 14px;font-size:13px;cursor:pointer;font-weight:500;flex:none}
+  #theme:hover{border-color:var(--accent);color:var(--accent)}
+  .lede{color:var(--muted);font-size:16px;margin:0 0 34px;max-width:60ch}
+  h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+     margin:0 0 12px;font-weight:600}
+  a.card{display:block;text-decoration:none;color:inherit;background:var(--card);
+      border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px;
+      box-shadow:var(--shadow);transition:border-color .15s ease,transform .15s ease}
+  a.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  a.card h3{margin:0 0 6px;font-size:19px;color:var(--accent)}
+  a.card p{margin:0 0 14px;color:var(--muted);font-size:14.5px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{background:var(--chip);color:var(--muted);border-radius:6px;padding:3px 9px;font-size:12.5px}
+  .note{border:1px dashed var(--line);border-radius:14px;padding:18px 24px;color:var(--muted);
+        font-size:14.5px;margin-bottom:14px}
+  footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+         color:var(--muted);font-size:13.5px}
+  footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <h1>AP Chemistry</h1>
+    <button id="theme">☀ Light</button>
+  </div>
+  <p class="lede">Interactive study pages. Each one holds a review sheet, practice problems with full worked solutions, flashcard decks, and lab review — in a single file that runs in your browser.</p>
+
+  <h2>Study pages</h2>
+
+  <a class="card" href="ap-chem-test-1-practice.html">
+    <h3>Test 1 — Practice Set &amp; Reference</h3>
+    <p>62 problems with step-by-step solutions, six flashcard decks, both labs with error analysis, and a readiness checklist.</p>
+    <div class="tags">
+      <span class="tag">Significant figures</span>
+      <span class="tag">Percent composition</span>
+      <span class="tag">Mole calculations</span>
+      <span class="tag">Empirical formulas</span>
+      <span class="tag">Net ionic equations</span>
+      <span class="tag">Alloys</span>
+      <span class="tag">Mass spectrometry</span>
+      <span class="tag">Labs</span>
+    </div>
+  </a>
+
+  <div class="note">More pages will be added here as the course goes on.</div>
+
+  <footer>
+    Equations are typeset with KaTeX and mhchem, loaded from a CDN — an internet connection is needed for them to render.
+    Source on <a href="https://github.com/smartasp/ap-chemistry">GitHub</a>.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  function set(t){ root.setAttribute('data-theme',t); btn.textContent = t==='dark' ? '☀ Light' : '☾ Dark'; }
+  btn.onclick=function(){ set(root.getAttribute('data-theme')==='dark'?'light':'dark'); };
+  set('dark');
+})();
+</script>
+</body>
+</html>
